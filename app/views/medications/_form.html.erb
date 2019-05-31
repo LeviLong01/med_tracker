@@ -9,26 +9,54 @@
   </ul>
 <% end %>
 
-<%= form_for @medication do |f| %>
-  <p>
-    <%= f.label :medicationname %><br/>
-    <%= f.text_field :medicationname %>
-  </p>
-  <p>
-    <%= f.label :unitvalue %><br/>
-    <%= f.text_field :unitvalue %>
-  </p>
-  <p>
-    <%= f.label :unitmeasurement %><br/>
-    <%= f.text_field :unitmeasurement %>
-  </p>
-  <p>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for(@medication, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :medication_name %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :medicationname, class: "form-control", placeholder: "Medication Name", autofocus: true %>
+        </div>
+      </div>
 
-<%= link_to "Back to articles listing", medications_path %>
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :unit_value %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :unitvalue, class: "form-control", placeholder: "Medication Unit Value", autofocus: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :unit_measurement %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_field :unitmeasurement, class: "form-control", placeholder: "Medication Unit Measurement", autofocus: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="control-label col-sm-2">
+          <%= f.label :description %>
+        </div>
+        <div class="col-sm-8">
+          <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Medication information", autofocus: true %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit class: "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="col-xs-4 col-xs-offset-4">
+      [ <%= link_to "Cancel request and return to medication listing", medications_path %> ]
+    </div>
+  </div>
+</div>
