@@ -50,7 +50,7 @@ class MedicationsController < ApplicationController
   end
 
   def medication_params
-    params.require(:medication).permit(:title, :description)
+    params.require(:medication).permit(:medicationname, :unitvalue, :unitmeasurement, :description)
   end
 
 end
