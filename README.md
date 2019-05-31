@@ -2,10 +2,10 @@
 
 Application Summary:
 
+Hosted in Heroku: https://medtrackerlsl.herokuapp.com/
+
     This application will allow users to sign-up and log their medications they have taken for
     the day
-    
-    Hosted in Heroku: https://medtrackerlsl.herokuapp.com/
     
     
 Features to Implement:
