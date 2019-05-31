@@ -38,10 +38,12 @@ $navbar-default-bg: #3BAB4B;
 
 .jumbotron h1{
   color: #3BAB4B;
+  padding-top: 30px;
   text-align: right;
   margin-bottom: 30px;
   letter-spacing: -1px;
   font-weight: bold;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .btn-xlarge{
