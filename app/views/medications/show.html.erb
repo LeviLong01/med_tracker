@@ -1,0 +1,13 @@
+<h1>Showing selected medications</h1>
+
+<p>Medication Name: <%= @medication.medicationname %></p>
+
+<p>Unit Value: <%= @medication.unitvalue %></p>
+
+<p>Unit Measurement: <%= @medication.unitmeasurement %></p>
+
+<p>Description: <%= @medication.unitvalue %></p>
+
+
+<%= link_to "Edit this medication", edit_medication_path(@medication) %> |
+<%= link_to "Back to medications listing", medications_path %>

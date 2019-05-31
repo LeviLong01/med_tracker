@@ -1,0 +1,34 @@
+
+
+<% if @medication.errors.any? %>
+  <h2>The following errors prevented the medication from getting created</h2>
+  <ul>
+    <% @medication.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @medication do |f| %>
+  <p>
+    <%= f.label :medicationname %><br/>
+    <%= f.text_field :medicationname %>
+  </p>
+  <p>
+    <%= f.label :unitvalue %><br/>
+    <%= f.text_field :unitvalue %>
+  </p>
+  <p>
+    <%= f.label :unitmeasurement %><br/>
+    <%= f.text_field :unitmeasurement %>
+  </p>
+  <p>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to "Back to articles listing", medications_path %>
