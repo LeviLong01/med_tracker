@@ -18,7 +18,7 @@ class MedicationsController < ApplicationController
     @medication = Medication.new(medication_params)
     @medication.user = User.first
     if @medication.save
-      flash[:notice] = "Medication was successfully created"
+      flash[:success] = "Medication was successfully created"
       redirect_to medication_path(@medication)
     else
       render 'new'
@@ -27,7 +27,7 @@ class MedicationsController < ApplicationController
 
   def update
     if @medication.update(medication_params)
-      flash[:notice] = "Medication was successfully updated"
+      flash[:success] = "Medication was successfully updated"
       redirect_to medication_path(@medication)
     else
       render 'edit'
@@ -40,7 +40,7 @@ class MedicationsController < ApplicationController
 
   def destroy
     @medication.destroy
-    flash[:notice] = "Medication was successfully deleted"
+    flash[:danger] = "Medication was successfully deleted"
     redirect_to medications_path
   end
 

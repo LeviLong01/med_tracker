@@ -1,13 +1,4 @@
-
-
-<% if @medication.errors.any? %>
-  <h2>The following errors prevented the medication from getting created</h2>
-  <ul>
-    <% @medication.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %>
+<%= render 'shared/errors', obj: @medication %>
 
 <div class="row">
   <div class="col-xs-12">
