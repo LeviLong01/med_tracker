@@ -3,14 +3,14 @@ class MedicationsController < ApplicationController
   before_action :set_medication, only: [:edit, :update, :show, :destroy]
 
   def index
-    @medications = Medication.all
+    @medications = Medication.paginate(page: params[:page], per_page: 5)
   end
 
   def new
     @medication = Medication.new
   end
 
-  def edits
+  def edit
 
   end
 
