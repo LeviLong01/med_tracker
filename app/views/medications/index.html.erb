@@ -1,30 +1,4 @@
 <h1 align="center">Listing all medications</h1>
 
 
-<% @medication.each do|medication| %>
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <div class="well well-lg">
-        <div class="medication-title">
-          <%= link_to medication.medicationname, medication_path(medication) %>
-        </div>
-        <div class="medication-unitvalue">
-          <%= medication.unitvalue %> <%= medication.unitmeasurement %>
-        </div>
-        <div class="medication-body">
-          <%= truncate(medication.description, length: 100) %>
-          <div class="medication-meta-details">
-            <small>Created by: <%= medication.user.username if medication.user %>,
-              <%= time_ago_in_words(medication.created_at) if medication.created_at %> ago,
-              Last Updated: <%= time_ago_in_words(medication.updated_at) if medication.updated_at %> ago</small>
-          </div>
-        </div>
-        <div class="medication-actions">
-          <%= link_to "Edit this medication", edit_medication_path(medication), class: "btn btn-xs btn-primary" %>
-          <%= link_to "Delete this medication", medication_path(medication), method: :delete, data: { confirm: "Are you sure " +
-              "you want to delete the medication?"}, class: "btn btn-xs btn-danger" %>
-        </div>
-      </div>
-    </div>
-  </div>
-<% end %>
+<%= render 'medication', obj: @medications %>
