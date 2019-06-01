@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :medications
 
   get 'signup', to: 'users#new'
-  resource :users, except: [:new]
+  resources :users, except: [:new]
 
 end
