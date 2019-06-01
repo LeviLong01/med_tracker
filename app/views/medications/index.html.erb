@@ -13,6 +13,9 @@
         </div>
         <div class="medication-body">
           <%= truncate(medication.description, length: 100) %>
+          <small>Created by: <%= medication.user.username if medication.user %>,
+                              <%= time_ago_in_words(medication.created_at) if medication.created_at %> ago,
+                  Last Updated: <%= time_ago_in_words(medication.updated_at) if medication.updated_at %> ago</small>
         </div>
         <div class="medication-actions">
           <%= link_to "Edit this medication", edit_medication_path(medication), class: "btn btn-xs btn-primary" %>

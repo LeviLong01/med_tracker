@@ -16,7 +16,7 @@ class MedicationsController < ApplicationController
 
   def create
     @medication = Medication.new(medication_params)
-    # @medication.user = User.first
+    @medication.user = User.first
     if @medication.save
       flash[:success] = "Medication was successfully created"
       redirect_to medication_path(@medication)
