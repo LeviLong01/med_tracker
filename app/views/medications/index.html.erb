@@ -1,26 +1,25 @@
 <h1 align="center">Listing all medications</h1>
-<p>
-  <%= link_to "Create new medication", new_medication_path %>
-</p>
 
-<table class="table table-hover">
-  <tr>
-    <th>Medication Name</th>
-    <th>Unit Value</th>
-    <th>Unit Measurement</th>
-    <th>Description</th>
-  </tr>
 
-  <% @medication.each do|medication| %>
-    <tr>
-      <td><%= medication.medicationname %></td>
-      <td><%= medication.unitvalue %></td>
-      <td><%= medication.unitmeasurement %></td>
-      <td><%= medication.description %></td>
-      <td><%= link_to "Edit", edit_medication_path(medication) %></td>
-      <td><%= link_to "Show", medication_path(medication) %></td>
-      <td><%= link_to "Delete", medication_path(medication), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    </tr>
-  <% end %>
-
-</table>
+<% @medication.each do|medication| %>
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="well well-lg">
+        <div class="medication-title">
+          <%= link_to medication.medicationname, medication_path(medication) %>
+        </div>
+        <div class="medication-unitvalue">
+          <%= medication.unitvalue %> <%= medication.unitmeasurement %>
+        </div>
+        <div class="medication-body">
+          <%= truncate(medication.description, length: 100) %>
+        </div>
+        <div class="medication-actions">
+          <%= link_to "Edit this medication", edit_medication_path(medication), class: "btn btn-xs btn-primary" %>
+          <%= link_to "Delete this article", medication_path(medication), method: :delete, data: { confirm: "Are you sure " +
+              "you want to delete the medication?"}, class: "btn btn-xs btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
