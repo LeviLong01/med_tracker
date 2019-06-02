@@ -6,4 +6,10 @@
   </div>
 </div>
 <h4 align="center"><%= @user.username %>'s medications</h4>
-<%= render 'medications/medication', obj: @user.medications %>
+<div class="center">
+  <%= will_paginate @user_medications %>
+</div>
+<%= render 'medications/medication', obj: @user_medications %>
+<div class="center">
+  <%= will_paginate @user_medications %>
+</div>
