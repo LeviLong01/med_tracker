@@ -3,6 +3,9 @@ $navbar-default-bg: #3BAB4B;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+  background-color: #D4D7D4;
+}
 
 #logo{
   float: left;
