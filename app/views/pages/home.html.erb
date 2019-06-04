@@ -1,8 +1,9 @@
 <div class="center jumbotron">
-  <h1>MedTracker</h1>
   <% if logged_in? %>
-    <h2 align="right">Welcome</h2>
+    <h1 align="right">Welcome to</h1>
+    <h1 align="right">MedTracker</h1>
   <% else %>
+    <h1>MedTracker</h1>
     <div class="btn-group-vertical loginbuttons">
       <%= link_to "Log in", "/login", class: "btn btn-primary btn-lg btn-xlarge pull-right" %>
       <%= link_to "Sign up", "/signup", class: "btn btn-primary btn-lg btn-xlarge pull-right" %>
