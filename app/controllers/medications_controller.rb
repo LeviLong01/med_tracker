@@ -3,11 +3,7 @@ class MedicationsController < ApplicationController
   before_action :set_medication, only: [:edit, :update, :show, :destroy]
 
   def index
-    if logged_in?
-      @medications = Medication.paginate(page: params[:page], per_page: 5)
-    else
-      redirect_to root_path
-    end
+    render_404
   end
 
   def new
@@ -17,7 +13,7 @@ class MedicationsController < ApplicationController
   def edit
     if logged_in?
     else
-      redirect_to root_path
+      render_404
     end
   end
 
@@ -51,17 +47,24 @@ class MedicationsController < ApplicationController
   end
 
   private
-
   def set_medication
     if logged_in?
       @medication = Medication.find(params[:id])
     else
-      redirect_to root_path
+      render_404
     end
   end
 
   def medication_params
     params.require(:medication).permit(:medicationname, :unitvalue, :unitmeasurement, :description)
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
   end
 
 end

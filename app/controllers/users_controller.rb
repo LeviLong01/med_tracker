@@ -3,11 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
 
   def index
-    if logged_in?
-      @users = User.paginate(page: params[:page], per_page: 5)
-    else
-      redirect_to root_path
-    end
+    render_404
   end
 
   def new
@@ -27,7 +23,7 @@ class UsersController < ApplicationController
   def edit
     if logged_in?
     else
-      redirect_to root_path
+      render_404
     end
   end
 
@@ -49,12 +45,20 @@ class UsersController < ApplicationController
     if logged_in?
       params.require(:user).permit(:username, :email, :password)
     else
-      redirect_to root_path
+      render_404
     end
   end
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def render_404
+    respond_to do |format|
+      format.html { render :file => "#{Rails.root}/public/404", :layout => false, :status => :not_found }
+      format.xml  { head :not_found }
+      format.any  { head :not_found }
+    end
   end
 
 end
