@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Thank you for signing up with MedTracker #{@user.username}"
-      redirect_to medications_path
+      redirect_to user_path
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "Your account was updated successfully"
-      redirect_to medications_path
+      redirect_to user_path
     else
       render 'edit'
     end
@@ -42,11 +42,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    if logged_in?
-      params.require(:user).permit(:username, :email, :password)
-    else
-      render_404
-    end
+    params.require(:user).permit(:username, :email, :password)
   end
 
   def set_user
