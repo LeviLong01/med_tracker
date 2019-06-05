@@ -3,7 +3,11 @@ class MedicationsController < ApplicationController
   before_action :set_medication, only: [:edit, :update, :show, :destroy]
 
   def index
-    @medications = Medication.paginate(page: params[:page], per_page: 5)
+    if logged_in?
+      @medications = Medication.paginate(page: params[:page], per_page: 5)
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -11,7 +15,6 @@ class MedicationsController < ApplicationController
   end
 
   def edit
-
   end
 
   def create
@@ -35,7 +38,6 @@ class MedicationsController < ApplicationController
   end
 
   def show
-
   end
 
   def destroy
@@ -47,7 +49,11 @@ class MedicationsController < ApplicationController
   private
 
   def set_medication
-    @medication = Medication.find(params[:id])
+    if logged_in?
+      @medication = Medication.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   def medication_params

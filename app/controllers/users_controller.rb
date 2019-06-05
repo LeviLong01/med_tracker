@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 5)
+    if logged_in?
+      @users = User.paginate(page: params[:page], per_page: 5)
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -38,7 +42,11 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    if logged_in?
+      params.require(:user).permit(:username, :email, :password)
+    else
+      redirect_to root_path
+    end
   end
 
   def set_user
