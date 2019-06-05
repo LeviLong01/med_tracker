@@ -15,6 +15,10 @@ class MedicationsController < ApplicationController
   end
 
   def edit
+    if logged_in?
+    else
+      redirect_to root_path
+    end
   end
 
   def create
